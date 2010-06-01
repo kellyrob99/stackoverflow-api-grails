@@ -2,6 +2,8 @@
  * Copyright (c) 2010.
  */
 
+
+
 package stackoverflow.plugin
 
 import groovyx.net.http.HTTPBuilder
@@ -9,6 +11,9 @@ import org.kar.StackOverflowAPIConstants
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.GET
 
+/**
+ * @author Kelly Robinson
+ */
 class StackAppsController
 {
 
@@ -20,7 +25,7 @@ class StackAppsController
         def ident = params.ident
         if (method.contains('{id}'))
         {
-            def index = StackOverflowAPIConstants.api.keySet().findIndexOf {it == method.toString()}
+            def index = StackOverflowAPIConstants.API.keySet().findIndexOf {it == method.toString()}
             def id = ident[index]
             if (id)
             {
@@ -35,15 +40,13 @@ class StackAppsController
         def http = new HTTPBuilder("http://api.$domain")
         def answer
         http.request(GET, JSON) {
-            uri.path = "/0.8$method"
+            uri.path = "/${StackOverflowAPIConstants.VERSION}$method"
             headers.'User-Agent' = 'Mozilla/5.0 Ubuntu/8.10 Firefox/3.0.4'
 
-            // response handler for a success response code:
             response.success = { resp, json ->
                 answer = json
             }
 
-            // handler for any failure status code:
             response.failure = { resp ->
                 answer = "Unexpected error: ${resp.statusLine.statusCode} : ${resp.statusLine.reasonPhrase}"
             }
