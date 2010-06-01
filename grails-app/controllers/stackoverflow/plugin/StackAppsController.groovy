@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2010.
+ */
+
 package stackoverflow.plugin
 
 import groovyx.net.http.HTTPBuilder
@@ -14,10 +18,10 @@ class StackAppsController
         def action = params.find {it.key == ('_action_show')}
         def (domain, method) = action.value.split('_')
         def ident = params.ident
-        def index = StackOverflowAPIConstants.api.keySet().findIndexOf {it == method.toString()}
-        def id = ident[index]
         if (method.contains('{id}'))
         {
+            def index = StackOverflowAPIConstants.api.keySet().findIndexOf {it == method.toString()}
+            def id = ident[index]
             if (id)
             {
                 method = method.toString().replace('{id}', id)

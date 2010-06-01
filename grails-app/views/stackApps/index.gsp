@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: krobinson6
-  Date: May 31, 2010
-  Time: 10:29:32 PM
-  To change this template use File | Settings | File Templates.
---%>
+%{--
+  - Copyright (c) 2010.
+  --}%
 
 <%@ page import="org.kar.StackOverflowAPIConstants" contentType="text/html;charset=UTF-8" %>
 <html>

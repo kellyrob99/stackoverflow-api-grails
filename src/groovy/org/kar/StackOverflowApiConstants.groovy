@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2010.
+ */
+
+
+
+
+
 package org.kar
 
 /**
@@ -5,7 +13,7 @@ package org.kar
  */
 class StackOverflowAPIConstants
 {
-    /** all of the available root domains    **/
+    /** all of the available root domains      **/
     static def domains = [
             'stackoverflow.com',
             'serverfault.com',
@@ -15,7 +23,7 @@ class StackOverflowAPIConstants
 
     static def api_version = '0.8'
 
-    /** all of the api endpoints     **/
+    /** all of the api endpoints       **/
     static def api = ["/answers/{id}": "Gets a set of questions enumerated in id.",
             "/answers/{id}/comments": "Gets the comments associated with a set of answers.",
             "/badges": "Gets all badges, in alphabetical order.",
