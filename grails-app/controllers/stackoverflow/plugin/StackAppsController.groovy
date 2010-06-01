@@ -28,16 +28,10 @@ class StackAppsController
             }
         }
 
-        println domain
-        println method
         def http = new HTTPBuilder("http://api.$domain")
         def answer
         http.request(GET, JSON) {
             uri.path = "/0.8$method"
-//            if (id)
-//            {
-//                uri.query = [id: id]
-//            }
             headers.'User-Agent' = 'Mozilla/5.0 Ubuntu/8.10 Firefox/3.0.4'
 
             // response handler for a success response code:
@@ -50,7 +44,7 @@ class StackAppsController
                 answer = "Unexpected error: ${resp.statusLine.statusCode} : ${resp.statusLine.reasonPhrase}"
             }
         }
-        [answer: answer]
+        [answer: answer, domain: domain, method: method]
     }
 
 }
