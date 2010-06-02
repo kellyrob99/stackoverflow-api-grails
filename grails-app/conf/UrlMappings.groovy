@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2010.
+ */
+
 class UrlMappings
 {
     static mappings = {
@@ -6,7 +10,7 @@ class UrlMappings
                 // apply constraints here
             }
         }
-        "/"(view: "/index")
+        "/"(view: "/stackApps/index")
         "500"(view: '/error')
     }
 }
