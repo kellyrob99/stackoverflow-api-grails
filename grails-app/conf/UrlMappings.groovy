@@ -10,7 +10,7 @@ class UrlMappings
                 // apply constraints here
             }
         }
-        "/"(view: "/stackApps/index")
+        "/"(view: "/index")
         "500"(view: '/error')
     }
 }

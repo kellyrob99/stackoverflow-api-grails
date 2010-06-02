@@ -4,12 +4,14 @@
 
 
 
+
+
 package stackoverflow.plugin
 
 import groovyx.net.http.HTTPBuilder
-import org.kar.StackOverflowAPIConstants
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.GET
+import static org.kar.StackOverflowAPIConstants.*
 
 /**
  * @author Kelly Robinson
@@ -25,7 +27,7 @@ class StackAppsController
         def ident = params.ident
         if (method.contains('{id}'))
         {
-            def index = StackOverflowAPIConstants.API.keySet().findIndexOf {it == method.toString()}
+            def index = API.keySet().findIndexOf {it == method.toString()}
             def id = ident[index]
             if (id)
             {
@@ -37,10 +39,10 @@ class StackAppsController
             }
         }
 
-        def http = new HTTPBuilder("http://api.$domain")
         def answer
+        def http = new HTTPBuilder("http://api.$domain")
         http.request(GET, JSON) {
-            uri.path = "/${StackOverflowAPIConstants.VERSION}$method"
+            uri.path = "/${VERSION}$method"
             headers.'User-Agent' = 'Mozilla/5.0 Ubuntu/8.10 Firefox/3.0.4'
 
             response.success = { resp, json ->
